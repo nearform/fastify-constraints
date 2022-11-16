@@ -8,3 +8,7 @@ node_modules
 
 # OS X
 .DS_Store
+
+# Test logs
+.nyc_output
+coverage
