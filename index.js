@@ -2,7 +2,10 @@ import fp from 'fastify-plugin'
 
 function fastifyConstraints(fastify, options, next) {
   fastify.addHook('onRoute', function hook(routeOptions) {
-    routeOptions.constraints = options.constraints
+    routeOptions.constraints = {
+      ...(options?.constraints || {}),
+      ...(routeOptions?.constraints || {})
+    }
   })
   next()
 }

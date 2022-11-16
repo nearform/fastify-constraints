@@ -32,3 +32,14 @@ fastify.get('/', () => 'Hello from version 1.0.0')
 // Start the server
 await fastify.listen({ port: 3000 })
 ```
+
+You can also specify constraints for specific routes which will be merged:
+
+```js
+await fastify.register(fastifyConstraints, {
+  constraints: { version: '1.0.0' }
+})
+
+fastify.get('/', () => 'Hello from version 1.0.0') // This route will have the version constraint
+fastify.get('/host-restricted', { constraints: { host: 'example.com' } }, () => 'Hello from example.com') // This route will have the version and host constraint
+```

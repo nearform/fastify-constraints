@@ -98,7 +98,34 @@ test('it should add constraints to routes in child scope', async t => {
   )
 })
 
-test('it should use the latest declared constraints on route creation', async t => {
+test('it should merge route level constraints with scope level constraints', async t => {
+  t.plan(1)
+
+  const fastify = Fastify()
+  await fastify.register(fastifyConstraints, {
+    constraints: { version: '1.0.0' }
+  })
+
+  fastify.get(
+    '/',
+    { constraints: { host: 'constraints.fastify.io' } },
+    () => {}
+  )
+
+  t.equal(
+    fastify.hasRoute({
+      url: '/',
+      method: 'GET',
+      constraints: {
+        version: '1.0.0',
+        host: 'constraints.fastify.io'
+      }
+    }),
+    true
+  )
+})
+
+test('it should use route level constraints in case of collision', async t => {
   t.plan(2)
 
   const fastify = Fastify()
@@ -106,28 +133,22 @@ test('it should use the latest declared constraints on route creation', async t 
     constraints: { version: '1.0.0' }
   })
 
-  fastify.post('/', () => {})
-
-  await fastify.register(fastifyConstraints, {
-    constraints: { host: 'constraints.fastify.io' }
-  })
-
-  fastify.get('/', () => {})
+  fastify.get('/', { constraints: { version: '2.0.0' } }, () => {})
 
   t.equal(
     fastify.hasRoute({
       url: '/',
-      method: 'POST',
+      method: 'GET',
       constraints: { version: '1.0.0' }
     }),
-    true
+    false
   )
 
   t.equal(
     fastify.hasRoute({
       url: '/',
       method: 'GET',
-      constraints: { host: 'constraints.fastify.io' }
+      constraints: { version: '2.0.0' }
     }),
     true
   )
