@@ -3,7 +3,6 @@ import fp from 'fastify-plugin'
 function fastifyConstraints(fastify, options, next) {
   fastify.addHook('onRegister', (instance, opts) => {
     if (!opts?.constraints) {
-      next()
       return
     }
 
