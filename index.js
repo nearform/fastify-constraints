@@ -1,19 +1,23 @@
 import fp from 'fastify-plugin'
 
-function fastifyConstraints(fastify, options, next) {
-  fastify.addHook('onRegister', (instance, opts) => {
-    if (!opts?.constraints) {
-      return
-    }
+async function fastifyConstraints(fastify) {
+  const symbol = Symbol.for('fastifyConstraints')
+  fastify.decorate(symbol, null)
 
-    instance.addHook('onRoute', function hook(routeOptions) {
-      routeOptions.constraints = {
-        ...opts.constraints,
-        ...routeOptions?.constraints
-      }
-    })
+  fastify.addHook('onRegister', function (instance, options) {
+    if (options.constraints) {
+      instance[symbol] = { ...instance[symbol], ...options.constraints }
+    }
   })
-  next()
+
+  fastify.addHook('onRoute', function (routeOptions) {
+    if (this[symbol]) {
+      routeOptions.constraints = {
+        ...this[symbol],
+        ...routeOptions.constraints
+      }
+    }
+  })
 }
 
 export default fp(fastifyConstraints, {
