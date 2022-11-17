@@ -1,11 +1,18 @@
 import fp from 'fastify-plugin'
 
 function fastifyConstraints(fastify, options, next) {
-  fastify.addHook('onRoute', function hook(routeOptions) {
-    routeOptions.constraints = {
-      ...options.constraints,
-      ...(routeOptions?.constraints || {})
+  fastify.addHook('onRegister', (instance, opts) => {
+    if (!opts?.constraints) {
+      next()
+      return
     }
+
+    instance.addHook('onRoute', function hook(routeOptions) {
+      routeOptions.constraints = {
+        ...opts.constraints,
+        ...routeOptions?.constraints
+      }
+    })
   })
   next()
 }
