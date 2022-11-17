@@ -129,3 +129,23 @@ test('it should use the route level defined constraints when there are collision
     })
   )
 })
+
+test('it should merge constraints from parent scope', async t => {
+  const fastify = Fastify()
+  await fastify.register(fastifyConstraints)
+  await fastify.register(
+    async parent =>
+      parent.register(async instance => instance.get('/', () => {}), {
+        constraints: { version: '1.0.0' }
+      }),
+    { constraints: { host: 'constraints.fastify.io' } }
+  )
+
+  t.ok(
+    fastify.hasRoute({
+      method: 'GET',
+      url: '/',
+      constraints: { version: '1.0.0', host: 'constraints.fastify.io' }
+    })
+  )
+})
