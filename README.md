@@ -54,4 +54,4 @@ await fastify.register(async (instance, opts) => {
 
 ## Examples
 
-See the [examples](./examples) folder for a complete examples for both ES and CommonJS modules.
+See the [examples](./examples) folder for a complete examples.
