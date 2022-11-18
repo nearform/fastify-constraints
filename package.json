@@ -1,12 +1,12 @@
 {
-  "name": "bench-template",
-  "version": "1.0.0",
-  "description": "Template to start a new repository on the bench",
+  "name": "fastify-constraints",
+  "version": "0.0.1",
+  "description": "Fastify plugin to add constraints to multiple routes",
   "main": "index.js",
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "test": "echo \"Error: no test specified\" && exit 0",
+    "test": "c8 --100 tap --no-coverage",
     "prepare": "husky install"
   },
   "repository": {
@@ -23,14 +23,20 @@
   "devDependencies": {
     "@commitlint/cli": "^17.2.0",
     "@commitlint/config-conventional": "^17.2.0",
+    "c8": "^7.12.0",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "fastify": "^4.9.2",
     "husky": "^8.0.2",
     "lint-staged": "^13.0.3",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "tap": "^16.3.1"
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix"
+  },
+  "dependencies": {
+    "fastify-plugin": "^4.3.0"
   }
 }
