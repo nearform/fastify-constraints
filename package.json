@@ -1,6 +1,6 @@
 {
   "name": "fastify-constraints",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "description": "Fastify plugin to add constraints to multiple routes",
   "main": "index.js",
   "type": "module",
