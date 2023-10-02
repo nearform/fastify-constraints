@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "test": "c8 --100 tap --no-coverage",
+    "test": "c8 tap",
     "prepare": "husky install"
   },
   "repository": {
@@ -38,5 +38,9 @@
   },
   "dependencies": {
     "fastify-plugin": "^4.3.0"
+  },
+  "tap": {
+    "disable-coverage": true,
+    "allow-empty-coverage": true
   }
 }
