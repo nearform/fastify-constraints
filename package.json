@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "test": "c8 --100 tap --no-coverage",
+    "test": "c8 tap",
     "prepare": "husky install"
   },
   "repository": {
@@ -31,12 +31,16 @@
     "husky": "^8.0.2",
     "lint-staged": "^14.0.0",
     "prettier": "^3.0.1",
-    "tap": "^16.3.1"
+    "tap": "^18.4.2"
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix"
   },
   "dependencies": {
     "fastify-plugin": "^4.3.0"
+  },
+  "tap": {
+    "disable-coverage": true,
+    "allow-empty-coverage": true
   }
 }

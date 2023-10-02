@@ -12,3 +12,4 @@ node_modules
 # Test logs
 .nyc_output
 coverage
+.tap
