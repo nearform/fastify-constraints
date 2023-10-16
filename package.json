@@ -29,7 +29,7 @@
     "eslint-plugin-prettier": "^5.0.0",
     "fastify": "^4.9.2",
     "husky": "^8.0.2",
-    "lint-staged": "^14.0.0",
+    "lint-staged": "^15.0.1",
     "prettier": "^3.0.1",
     "tap": "^18.4.2"
   },
