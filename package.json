@@ -3,6 +3,7 @@
   "version": "1.0.10",
   "description": "Fastify plugin to add constraints to multiple routes",
   "main": "index.js",
+  "types": "index.d.ts",
   "type": "module",
   "scripts": {
     "lint": "eslint .",
