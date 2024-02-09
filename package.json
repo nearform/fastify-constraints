@@ -3,10 +3,12 @@
   "version": "1.0.10",
   "description": "Fastify plugin to add constraints to multiple routes",
   "main": "index.js",
+  "types": "index.d.ts",
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "test": "c8 tap",
+    "test": "c8 tap test/*.test.js && npm run test:types",
+    "test:types": "tsd",
     "prepare": "husky install"
   },
   "repository": {
@@ -31,6 +33,7 @@
     "husky": "^9.0.6",
     "lint-staged": "^15.0.1",
     "prettier": "^3.0.1",
+    "tsd": "^0.30.0",
     "tap": "^18.4.2"
   },
   "lint-staged": {
@@ -38,6 +41,9 @@
   },
   "dependencies": {
     "fastify-plugin": "^4.3.0"
+  },
+  "tsd": {
+    "directory": "test/types"
   },
   "tap": {
     "disable-coverage": true,
