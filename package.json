@@ -24,7 +24,7 @@
   "homepage": "https://github.com/nearform/fastify-constraints#readme",
   "devDependencies": {
     "@commitlint/cli": "^19.0.3",
-    "@commitlint/config-conventional": "^18.0.0",
+    "@commitlint/config-conventional": "^19.0.3",
     "c8": "^9.0.0",
     "eslint": "^8.27.0",
     "eslint-config-prettier": "^9.0.0",
