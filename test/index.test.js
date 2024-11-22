@@ -1,5 +1,5 @@
-import { test } from 'tap'
 import Fastify from 'fastify'
+import { test } from 'node:test'
 import fastifyConstraints from '../index.js'
 
 test('it should do nothing when no constraints are defined', async t => {
@@ -8,7 +8,7 @@ test('it should do nothing when no constraints are defined', async t => {
 
   await fastify.register(async () => fastify.get('/', () => ({})))
 
-  t.ok(
+  t.assert.ok(
     fastify.hasRoute({
       method: 'GET',
       url: '/'
@@ -28,14 +28,14 @@ test('it should add constraints to all routes registered in a plugin', async t =
     { constraints: { version: '1.0.0' } }
   )
 
-  t.ok(
+  t.assert.ok(
     fastify.hasRoute({
       method: 'GET',
       url: '/',
       constraints: { version: '1.0.0' }
     })
   )
-  t.ok(
+  t.assert.ok(
     fastify.hasRoute({
       method: 'POST',
       url: '/',
@@ -50,14 +50,14 @@ test('it should not affect routes from other plugins', async t => {
   await fastify.register(async () => {}, { constraints: { version: '1.0.0' } })
   await fastify.register(async instance => instance.get('/', () => {}))
 
-  t.ok(
+  t.assert.ok(
     fastify.hasRoute({
       method: 'GET',
       url: '/'
     })
   )
-  t.notOk(
-    fastify.hasRoute({
+  t.assert.ok(
+    !fastify.hasRoute({
       method: 'GET',
       url: '/',
       constraints: { version: '1.0.0' }
@@ -72,14 +72,14 @@ test('it should not affect routes from the parent scope', async t => {
 
   fastify.get('/', () => {})
 
-  t.ok(
+  t.assert.ok(
     fastify.hasRoute({
       method: 'GET',
       url: '/'
     })
   )
-  t.notOk(
-    fastify.hasRoute({
+  t.assert.ok(
+    !fastify.hasRoute({
       method: 'GET',
       url: '/',
       constraints: { version: '1.0.0' }
@@ -96,7 +96,7 @@ test('it should merge constraints defined at route level', async t => {
     { constraints: { host: 'constraints.fastify.io' } }
   )
 
-  t.ok(
+  t.assert.ok(
     fastify.hasRoute({
       method: 'GET',
       url: '/',
@@ -114,15 +114,15 @@ test('it should use the route level defined constraints when there are collision
     { constraints: { version: '2.0.0' } }
   )
 
-  t.ok(
+  t.assert.ok(
     fastify.hasRoute({
       method: 'GET',
       url: '/',
       constraints: { version: '1.0.0' }
     })
   )
-  t.notOk(
-    fastify.hasRoute({
+  t.assert.ok(
+    !fastify.hasRoute({
       method: 'GET',
       url: '/',
       constraints: { version: '2.0.0' }
@@ -141,7 +141,7 @@ test('it should merge constraints from parent scope', async t => {
     { constraints: { host: 'constraints.fastify.io' } }
   )
 
-  t.ok(
+  t.assert.ok(
     fastify.hasRoute({
       method: 'GET',
       url: '/',
