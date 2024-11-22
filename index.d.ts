@@ -1,6 +1,6 @@
 import { FastifyPluginAsync } from 'fastify'
 
-type FastifyConstraints = FastifyPluginAsync<never>
+type FastifyConstraints = FastifyPluginAsync
 
 declare namespace fastifyConstraints {
   export const fastifyConstraints: FastifyConstraints
