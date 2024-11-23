@@ -21,6 +21,6 @@ async function fastifyConstraints(fastify) {
 }
 
 export default fp(fastifyConstraints, {
-  fastify: '4.x',
+  fastify: '5.x',
   name: 'fastify-constraints'
 })
