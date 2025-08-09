@@ -1,5 +1,5 @@
 import fastify from 'fastify'
-import plugin from '../../index'
+import plugin from '../../index.js'
 
 const app = fastify()
 
