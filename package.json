@@ -43,9 +43,5 @@
   },
   "tsd": {
     "directory": "test/types"
-  },
-  "tap": {
-    "disable-coverage": true,
-    "allow-empty-coverage": true
   }
 }
