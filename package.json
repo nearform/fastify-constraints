@@ -23,23 +23,26 @@
   },
   "homepage": "https://github.com/nearform/fastify-constraints#readme",
   "devDependencies": {
-    "@commitlint/cli": "^20.0.0",
-    "@commitlint/config-conventional": "^20.0.0",
-    "c8": "^10.1.2",
-    "eslint": "^8.27.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-prettier": "^5.0.0",
-    "fastify": "^5.0.0",
-    "husky": "^9.0.11",
-    "lint-staged": "^16.0.0",
-    "prettier": "^3.0.1",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
+    "@eslint/eslintrc": "^3.3.3",
+    "@eslint/js": "^9.39.1",
+    "c8": "^10.1.3",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.4",
+    "fastify": "^5.6.2",
+    "globals": "^16.5.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.7.4",
     "tsd": "^0.33.0"
   },
   "lint-staged": {
     "*.{js,jsx}": "eslint --cache --fix"
   },
   "dependencies": {
-    "fastify-plugin": "^5.0.1"
+    "fastify-plugin": "^5.1.0"
   },
   "tsd": {
     "directory": "test/types"
