@@ -10,7 +10,7 @@ export default [
       globals: {
         ...globals.node
       },
-      ecmaVersion: 'latest',
+      ecmaVersion: 2021,
       sourceType: 'module'
     }
   }
