@@ -14,7 +14,13 @@ expect(app.register).type.toBeCallableWith(plugin)
 // Basic registration
 app.register(plugin)
 
-// Registration as child plugin with constraints option
+// Registration with child scope - constraints are captured via onRegister hook
 app.register(async (child) => {
   child.get('/', () => 'hello')
 }, { constraints: { version: '1.0.0' } })
+
+// Verify constraints can be added to route level
+// (This is the typed way constraints are used in Fastify)
+app.register(async (child) => {
+  child.get('/', { constraints: { version: '1.0.0' } }, () => 'hello')
+})
