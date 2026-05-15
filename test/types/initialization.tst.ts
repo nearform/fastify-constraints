@@ -8,6 +8,9 @@ expect(plugin).type.toBeAssignableTo<FastifyPluginAsync>()
 
 const app = fastify()
 
+// Verify app.register can be called with the plugin
+expect(app.register).type.toBeCallableWith(plugin)
+
 // Basic registration
 app.register(plugin)
 
