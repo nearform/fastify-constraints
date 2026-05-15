@@ -1,6 +1,6 @@
 import { expect } from 'tstyche'
 import fastify from 'fastify'
-import { FastifyPluginAsync, FastifyInstance } from 'fastify'
+import { FastifyPluginAsync } from 'fastify'
 import plugin from '../../index.js'
 
 // Verify the plugin is assignable to FastifyPluginAsync
