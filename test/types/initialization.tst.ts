@@ -1,6 +1,6 @@
 import { expect } from 'tstyche'
 import fastify from 'fastify'
-import { FastifyPluginAsync } from 'fastify'
+import { FastifyPluginAsync, FastifyInstance } from 'fastify'
 import plugin from '../../index.js'
 
 // Verify the plugin is assignable to FastifyPluginAsync
@@ -15,12 +15,8 @@ expect(app.register).type.toBeCallableWith(plugin)
 app.register(plugin)
 
 // Registration with child scope - constraints are captured via onRegister hook
-app.register(async (child) => {
-  child.get('/', () => 'hello')
-}, { constraints: { version: '1.0.0' } })
-
-// Verify constraints can be added to route level
-// (This is the typed way constraints are used in Fastify)
-app.register(async (child) => {
+app.register(async (child: FastifyInstance) => {
+  // Verify child.get can be called with route options and constraints
+  expect(child.get).type.toBeCallableWith('/', { constraints: { version: '1.0.0' } }, () => 'hello')
   child.get('/', { constraints: { version: '1.0.0' } }, () => 'hello')
 })
