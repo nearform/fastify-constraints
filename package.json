@@ -3,11 +3,11 @@
   "version": "2.0.0",
   "description": "Fastify plugin to add constraints to multiple routes",
   "main": "index.js",
-  "types": "index.d.ts",
+  "types": "types/index.d.ts",
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "test": "c8 node --test test/*.js && npm run test:types",
+    "test": "c8 node --test && npm run test:types",
     "test:types": "tstyche",
     "prepare": "husky"
   },
