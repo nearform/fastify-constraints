@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "test": "c8 node --test && npm run test:types",
+    "test": "c8 node --test test/*.js && npm run test:types",
     "test:types": "tstyche",
     "prepare": "husky"
   },
