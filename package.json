@@ -42,6 +42,6 @@
     "*.{js,jsx}": "eslint --cache --fix"
   },
   "dependencies": {
-    "fastify-plugin": "^5.1.0"
+    "fastify-plugin": "^6.0.0"
   }
 }
